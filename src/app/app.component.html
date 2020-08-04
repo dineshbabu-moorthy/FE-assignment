@@ -3,8 +3,8 @@
   <br>
   <div class="row">
     <div class="col-md-offset-4 col-md-4">
-      <h4 *ngIf="successMsg" class="text-success">{{successMsg}}</h4>
-      <h4 *ngIf="errorMsg" class="text-danger">{{errorMsg}}</h4>
+      <h4 *ngIf="successMsg && isValidCsv" class="text-success">{{successMsg}}</h4>
+      <h4 *ngIf="errorMsg && !isValidCsv" class="text-danger">{{errorMsg}}</h4>
     </div>
   </div>
   <br>
@@ -47,7 +47,8 @@
 <br>
 
       <br>
-      <div *ngIf="outputData">
+      
+      <div *ngIf="outputData && isValidCsv" >
           <h4 class="text-center">Output Data</h4>
         <div class="row">
         <div class="col-md-offset-8 col-md-4">
@@ -66,8 +67,8 @@
           </tr>
 
           <tr *ngFor="let data of outputData | filterPipe: queryString">
-            <td>{{data.fname}}</td>
-            <td>{{data.lname}}</td>
+            <td>{{data.firstName}}</td>
+            <td>{{data.surName}}</td>
             <td>{{data.issueCount}}</td>
             <td>{{data.dateOfBirth}}</td>
           </tr>
